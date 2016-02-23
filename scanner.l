@@ -20,7 +20,7 @@ or			{return TOKEN_OR;}
 not			{return TOKEN_NOT;}
 cons			{return TOKEN_CONS;}
 cond			{return TOKEN_COND;}
-define		{return TOKEN_DEFINE}
+define		{return TOKEN_DEFINE;}
 cdr			{return TOKEN_CDR;}
 car			{return TOKEN_CAR;}
 "null?"			{return TOKEN_NULL;}
@@ -29,7 +29,7 @@ if			{return TOKEN_IF;}
 else			{return TOKEN_ELSE;}
 #f			{return TOKEN_FALSE;}
 #t			{return TOKEN_TRUE;}
-"'"			{return TOKEN_SINGLEQUOTE}
+"'"			{return TOKEN_SINGLEQUOTE;}
 "+"			{return TOKEN_ADD;}
 "-"			{return TOKEN_SUBTRACT;}
 "*"			{return TOKEN_MULTIPLY;}

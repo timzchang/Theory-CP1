@@ -12,7 +12,7 @@ scanner.c:  scanner.l parser.tab.h
 	flex -o scanner.c scanner.l
 
 parser.tab.c parser.tab.h: scheme.bison
-	bison -d -bparser -v scheme.bison
+	yacc -d -bparser -v scheme.bison
 
 .PHONY: clean
 clean:

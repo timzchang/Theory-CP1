@@ -1,15 +1,11 @@
 #include "token.h"
-#include "parser.tab.h"
-#include "decl.h"
-#include "stmt.h"
-#include "param_list.h"
-#include "expr.h"
-#include "type.h"
+//#include "parser.tab.h"
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
 #include <string.h>
 #include <getopt.h>
+
 void print_usage_and_exit();
 void scan(char*);
 void parse(char*);
@@ -53,7 +49,7 @@ void scan(char *file){
 	int t;
 	yyin = fopen(file,"r");
 	if(!yyin){
-        	printf("Could not open file '%s'\n",file);
+        	fprintf(stderr,"Could not open file '%s'\n",file);
 	 	exit(1);
         }
 	while(1){
@@ -61,7 +57,7 @@ void scan(char *file){
 		if (!t){
 			break;
 		} else{				// if t is not NULL and not 0
-			if(t==TOKEN_STRING_LITERAL || t==TOKEN_CHARACTER_LITERAL){	// if it requires a literal,
+			if(t==TOKEN_STRING_LITERAL){	// if it requires a literal,
 				printf("%s %s\n",token_string(t),yytext);				// print out the string and the value
 			} else {
 				printf("%s\n",token_string(t));						// print out the string of the token
@@ -83,8 +79,8 @@ void parse(char *file){
 	 	exit(1);
         }
 	if(yyparse()==0){
-		decl_print(program,0);		// recursively print the syntax tree
-		
+//		decl_print(program,0);		// recursively print the syntax tree
+		printf("successful parse\n");		
 	} else {
 		printf("parse failed\n");
 		exit(1);
