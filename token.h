@@ -2,6 +2,7 @@
 #define TOKEN_H
 
 enum token{
+	NOT_TOKEN,
 	TOKEN_L_PAREN,
 	TOKEN_R_PAREN,
 	TOKEN_SEMICOLON,
