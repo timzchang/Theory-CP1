@@ -98,7 +98,7 @@ const char* token_string(token_t t){
 			break;
 		// default cases - shouldn't reach here
 		case TOKEN_INTEGER_LITERAL:
-			return "INTEGER LITERAL";	
+			return "INTEGER_LITERAL";	
 			break;
 		default:
 			return "scan error";
@@ -123,6 +123,8 @@ void edit_string(char* word){
 				if(word[0] == '\0'){
 					return;
 				}
+			} else if(word[i+1]=='t'){
+				word[i] = '\t';
 			} else{
 				word[i] = word[i+1];
 			}
