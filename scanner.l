@@ -1,6 +1,7 @@
 %option noyywrap
 %{ 
-#include "token.h"
+//#include "token.h"
+#include "parser.tab.h"
 %}
 delim 	[ \t\n\r]
 ws 	{delim}+

@@ -54,65 +54,88 @@ extern char *yytext;
 extern int yylex();
 extern int yyerror(char *str);
 
+int parser_result = 0;
 %}
 
 %%
-program		:	statement_list			/*scheme programs are just lists of sequential functions*/
-			
-				
-	;
+/*
+program		:	stmt_list
+			;
 
-statement_list	:	func_list statement_list
-				| lat_list statement_list
-				| /*nothing*/
-	;
-lat_list	:	lat lat_list
-				| /*nothing*/
-	;
-lat		:	
-				| /*nothing*/
-func_list	:	func func_list		/* func list is at least one function */
-				| /*nothing*/
-	;
-func		:	TOKEN_L_PAREN func_name arg_list TOKEN_R_PAREN	/* ( func arg_list ) */
-				| /*nothing*/
-	;
+stmt_list	:	func_list stmt_list
+			|	data_list stmt_list
+			|
+			;
+
+func_list	:	func func_list
+			|
+			;
+
+func		:	TOKEN_L_PAREN func_name func TOKEN_R_PAREN
+			|	TOKEN_L_PAREN func_name data_list TOKEN_R_PAREN
+			|	
+			;
+
 func_name	:	TOKEN_TRUE
-				| 	TOKEN_FALSE
-				|	TOKEN_IF
-				|	TOKEN_AND
-				|	TOKEN_OR
-				|	TOKEN_NOT
-				|	TOKEN_ADD
-				|	TOKEN_SUBTRACT
-				|	TOKEN_DIVIDE
-				|	TOKEN_MULTIPLY
-				|	TOKEN_COND
-				|	TOKEN_CONS
-				|	TOKEN_DEFINE
-				|	TOKEN_NULL
-				|	TOKEN_CAR
-				|	TOKEN_CDR
-				|	TOKEN_GT
-				|	TOKEN_LT
-				|	TOKEN_EQ
-				|	TOKEN_GTE
-				|	TOKEN_LTE
-				|	TOKEN_ELSE
-				|	TOKEN_DISPLAY
-				|	TOKEN_LAMBDA
-				|	TOKEN_MOD
-				|	TOKEN_IDENT
-	;
-arg_list	:		func arg_list
-				|	TOKEN_IDENT arg_list
-				|	TOKEN_STRING_LITERAL arg_list
-				|	TOKEN_INTEGER_LITERAL arg_list
-				|
-	;
+			| 	TOKEN_FALSE
+			|	TOKEN_IF
+			|	TOKEN_AND
+			|	TOKEN_OR
+			|	TOKEN_NOT
+			|	TOKEN_ADD
+			|	TOKEN_SUBTRACT
+			|	TOKEN_DIVIDE
+			|	TOKEN_MULTIPLY
+			|	TOKEN_COND
+			|	TOKEN_CONS
+			|	TOKEN_DEFINE
+			|	TOKEN_NULL
+			|	TOKEN_CAR
+			|	TOKEN_CDR
+			|	TOKEN_GT
+			|	TOKEN_LT
+			|	TOKEN_EQ
+			|	TOKEN_GTE
+			|	TOKEN_LTE
+			|	TOKEN_ELSE
+			|	TOKEN_DISPLAY
+			|	TOKEN_LAMBDA
+			|	TOKEN_MOD
+			|	TOKEN_IDENT
+			;
 
-func_list:	TOKEN_TRUE
-;
+data_list	:	TOKEN_SINGLEQUOTE TOKEN_L_PAREN list TOKEN_R_PAREN data_list
+			|	
+			;
+
+list		:	atom list
+			|	TOKEN_L_PAREN list TOKEN_R_PAREN list
+			|
+			;
+
+atom		:	TOKEN_SINGLEQUOTE TOKEN_IDENT
+			|	TOKEN_INTEGER_LITERAL
+			|	TOKEN_IDENT
+			;
+*/
+/*
+program		:	expr
+				{parser_result = $1;}
+			;	
+expr		:	TOKEN_L_PAREN TOKEN_ADD expr expr TOKEN_R_PAREN
+				{printf("im adding\n"); $$ = $3 + $4;}
+			|	TOKEN_L_PAREN TOKEN_SUBTRACT expr expr TOKEN_R_PAREN
+				{$$ = $3 - $4;}
+			|	TOKEN_L_PAREN TOKEN_DIVIDE expr expr TOKEN_R_PAREN
+				{$$ = $3 / $4;}
+			|	TOKEN_L_PAREN TOKEN_MULTIPLY expr expr TOKEN_R_PAREN
+				{$$ = $3 * $4;}
+			|	TOKEN_INTEGER_LITERAL
+				{$$ = atoi(yytext);}
+			;
+*/
+program		: TOKEN_ADD
+			;
 %%
 
 int yyerror(char *str)

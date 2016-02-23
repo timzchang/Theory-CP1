@@ -12,7 +12,6 @@ void parse(char*);
 extern int yyparse();
 extern int yylex();
 extern const char* token_string(token_t t);
-
 int main(int argc, char* argv[]){
 	int opt, long_index;
 	static struct option long_options[] = {
@@ -70,17 +69,17 @@ void scan(char *file){
 
 // parse the file passed in and prints out the syntax tree. Will fail with exit code 1 if the parse is unsuccessful
 void parse(char *file){
-        extern FILE* yyin;		// file to read from
+    extern FILE* yyin;		// file to read from
 	extern char* yytext;		// holds matches
-	extern struct decl* program;
+	extern int parser_result;
 	yyin = fopen(file,"r");
 	if(!yyin){
         	printf("Could not open file '%s'\n",file);
 	 	exit(1);
         }
 	if(yyparse()==0){
-//		decl_print(program,0);		// recursively print the syntax tree
-		printf("successful parse\n");		
+		printf("successful parse\n");
+		printf("result is: %d\n",parser_result);
 	} else {
 		printf("parse failed\n");
 		exit(1);

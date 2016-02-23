@@ -3,7 +3,7 @@ CC=gcc
 all: heist
 
 heist: heist.o scanner.o parser.tab.o token.o
-	$(CC) -g -O0 heist.o scanner.o parser.tab.o token.o -o heist
+	$(CC) heist.o scanner.o parser.tab.o token.o -o heist
 
 %.o: %.c *.h parser.tab.h
 	gcc -c $< -o $@
