@@ -57,8 +57,47 @@ extern int yyerror(char *str);
 %}
 
 %%
-program:	func_list
-;
+program	:	func_list										/*scheme programs are just lists of sequential functions*/
+	;
+func_list	:	func func_list									/* func list is at least one function */
+				| /*nothing*/
+	;
+func		:	TOKEN_L_PAREN func_name arg_list TOKEN_R_PAREN	/* ( func arg_list ) */
+				| /*nothing*/
+	;
+func_name	:	TOKEN_TRUE
+				| 	TOKEN_FALSE
+				|	TOKEN_IF
+				|	TOKEN_AND
+				|	TOKEN_OR
+				|	TOKEN_NOT
+				|	TOKEN_ADD
+				|	TOKEN_SUBTRACT
+				|	TOKEN_DIVIDE
+				|	TOKEN_MULTIPLY
+				|	TOKEN_COND
+				|	TOKEN_CONS
+				|	TOKEN_DEFINE
+				|	TOKEN_NULL
+				|	TOKEN_CAR
+				|	TOKEN_CDR
+				|	TOKEN_GT
+				|	TOKEN_LT
+				|	TOKEN_EQ
+				|	TOKEN_GTE
+				|	TOKEN_LTE
+				|	TOKEN_ELSE
+				|	TOKEN_DISPLAY
+				|	TOKEN_LAMBDA
+				|	TOKEN_MOD
+				|	TOKEN_IDENT		/*user defined functions?*/
+	;
+arg_list	:	func_list
+				|	TOKEN_IDENT
+				|	TOKEN_STRING_LITERAL
+				|	TOKEN_INTEGER_LITERAL
+
+	;
 
 func_list:	TOKEN_TRUE
 ;
