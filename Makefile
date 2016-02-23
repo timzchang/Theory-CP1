@@ -1,13 +1,13 @@
 CC=gcc
 
-all: cminor
+all: heist
 
-cminor: lex.yy.c token.c main.c scanner.l
-	$(CC) lex.yy.c token.c main.c -o cminor 
+heist: lex.yy.c token.c heist.c scanner.l
+	$(CC) lex.yy.c token.c heist.c -o heist 
 
 lex.yy.c: scanner.l
 	flex scanner.l
 
 .PHONY: clean
 clean:
-	-rm lex.yy.c cminor
+	-rm lex.yy.c heist
