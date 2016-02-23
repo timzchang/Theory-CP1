@@ -28,7 +28,7 @@ int main(int argc, char* argv[]){
 }
 
 void print_usage_and_exit(){
-  	printf("Usage: ./cminor -scan sourcefile.cmnior\n");
+  	printf("Usage: ./heist -scan sourcefile.scm\n");
   	exit(1);
 }
 
@@ -43,10 +43,10 @@ void scan(char *file){
         }
 	while(1){
 		t = yylex();
-		if (!t){
+		if (!t){	// if end of file
 			break;
 		} else {				// if t is not NULL and not 0
-			if(t==TOKEN_STRING_LITERAL || t==TOKEN_CHARACTER_LITERAL){	// if it requires a literal,
+			if(t==TOKEN_STRING_LITERAL){	// if it requires a literal,
 				printf("%s %s\n",token_string(t),yytext);		// print out the string and the value
 			} else { 							// or if it is a normal token
 				printf("%s\n",token_string(t));				// print out the string of the token
