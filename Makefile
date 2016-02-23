@@ -2,12 +2,18 @@ CC=gcc
 
 all: heist
 
-heist: lex.yy.c token.c heist.c scanner.l
-	$(CC) lex.yy.c token.c heist.c -o heist 
+heist: heist.o scanner.o parser.tab.o
+	$(CC) -g -O0 heist.o scanner.o parser.tab.o -o heist
 
-lex.yy.c: scanner.l
-	flex scanner.l
+%.o: %.c *.h parser.tab.h
+	gcc -c $< -o $@
+
+scanner.c:  scanner.l parser.tab.h 
+	flex -o scanner.c scanner.l
+
+parser.tab.c parser.tab.h: scheme.bison
+	bison -d -bparser -v scheme.bison
 
 .PHONY: clean
 clean:
-	- rm lex.yy.c heist *~
+	-rm -f parser.tab.* parser.output scanner.c heist *.o 
