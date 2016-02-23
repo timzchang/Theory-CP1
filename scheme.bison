@@ -57,8 +57,20 @@ extern int yyerror(char *str);
 %}
 
 %%
-program		:	func_list			/*scheme programs are just lists of sequential functions*/
+program		:	statement_list			/*scheme programs are just lists of sequential functions*/
+			
+				
 	;
+
+statement_list	:	func_list statement_list
+				| lat_list statement_list
+				| /*nothing*/
+	;
+lat_list	:	lat lat_list
+				| /*nothing*/
+	;
+lat		:	
+				| /*nothing*/
 func_list	:	func func_list		/* func list is at least one function */
 				| /*nothing*/
 	;
