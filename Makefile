@@ -10,4 +10,4 @@ lex.yy.c: scanner.l
 
 .PHONY: clean
 clean:
-	-rm lex.yy.c heist
+	-rm lex.yy.c heist *~

@@ -81,9 +81,6 @@ const char* token_string(token_t t){
 		case TOKEN_LTE:
 			return "LTE";
 			break;
-		case TOKEN_NE:
-			return "NE";
-			break;
 		case TOKEN_ELSE:
 			return "ELSE";
 			break;
@@ -100,8 +97,8 @@ const char* token_string(token_t t){
 			return "STRING_LITERAL";
 			break;
 		// default cases - shouldn't reach here
-		case TOKEN_ERROR:
-			return "";
+		case TOKEN_INTEGER_LITERAL:
+			return "INTEGER LITERAL";	
 			break;
 		default:
 			return "scan error";

@@ -44,6 +44,7 @@ void scan(char *file){
 	while(1){
 		t = yylex();
 		if (!t){	// if end of file
+			
 			break;
 		} else {				// if t is not NULL and not 0
 			if(t==TOKEN_STRING_LITERAL){	// if it requires a literal,
