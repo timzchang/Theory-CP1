@@ -1,13 +1,15 @@
 %option noyywrap
 %{ 
-//#include "token.h"
+/*#include "token.h"*/
 #include "parser.tab.h"
+// NOTE: in id regex, single quote may not have to be escaped
+/*id 	({letter}|_)({letter}|{digit}|_)**/
 %}
 delim 	[ \t\n\r]
 ws 	{delim}+
 digit 	[0-9]
 letter 	[a-zA-Z]
-id 	({letter}|_)({letter}|{digit}|_)*
+id 	[^ \t\n\r\"\'{}\[\]()\|`#,;][^ \t\n\r\"\'{}\[\]()\|`;]* 
 number	{digit}+
 string  \"([^\"\n]|\\\")*\"
 com 	;.*$

@@ -71,7 +71,7 @@ void scan(char *file){
 void parse(char *file){
     extern FILE* yyin;		// file to read from
 	extern char* yytext;		// holds matches
-	/*extern int parser_result;*/
+	extern int parser_result;
 	yyin = fopen(file,"r");
 	if(!yyin){
         	printf("Could not open file '%s'\n",file);
@@ -79,7 +79,7 @@ void parse(char *file){
         }
 	if(yyparse()==0){
 		printf("successful parse\n");
-		/*printf("result is: %d\n",parser_result);*/
+		printf("result is: %d\n",parser_result);
 	} else {
 		printf("parse failed\n");
 		exit(1);

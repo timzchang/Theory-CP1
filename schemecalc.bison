@@ -58,56 +58,20 @@ int parser_result = 0;
 %}
 
 %%
-program		:	expr_list
-				/*{parser_result = $1;}*/
+program		:	expr
+				{parser_result = $1;}
+			;	
+expr		:	TOKEN_L_PAREN TOKEN_ADD expr expr TOKEN_R_PAREN
+				{$$ = $3 + $4;}
+			|	TOKEN_L_PAREN TOKEN_SUBTRACT expr expr TOKEN_R_PAREN
+				{$$ = $3 - $4;}
+			|	TOKEN_L_PAREN TOKEN_DIVIDE expr expr TOKEN_R_PAREN
+				{$$ = $3 / $4;}
+			|	TOKEN_L_PAREN TOKEN_MULTIPLY expr expr TOKEN_R_PAREN
+				{$$ = $3 * $4;}
+			|	TOKEN_INTEGER_LITERAL
+				{$$ = atoi(yytext);}
 			;
-
-expr_list 	: 	expr expr_list
-	   	| 	/*nothing*/
-;
-
-expr		:	TOKEN_L_PAREN expr_list TOKEN_R_PAREN
-      		| 	TOKEN_SINGLEQUOTE func
-		| 	TOKEN_SINGLEQUOTE TOKEN_INTEGER_LITERAL
-		| 	TOKEN_SINGLEQUOTE TOKEN_STRING_LITERAL
-      		| 	TOKEN_INTEGER_LITERAL
-		| 	TOKEN_STRING_LITERAL
-		| 	func 
-		| 	TOKEN_SINGLEQUOTE TOKEN_L_PAREN expr_list TOKEN_R_PAREN 
-;
-
-func 		:	TOKEN_TRUE
-			| 	TOKEN_FALSE
-			|	TOKEN_IF
-			|	TOKEN_AND
-			|	TOKEN_OR
-			|	TOKEN_NOT
-			|	TOKEN_ADD
-			|	TOKEN_SUBTRACT
-			|	TOKEN_DIVIDE
-			|	TOKEN_MULTIPLY
-			|	TOKEN_COND
-			|	TOKEN_CONS
-			|	TOKEN_DEFINE
-			|	TOKEN_NULL
-			|	TOKEN_CAR
-			|	TOKEN_CDR
-			|	TOKEN_GT
-			|	TOKEN_LT
-			|	TOKEN_EQ
-			|	TOKEN_GTE
-			|	TOKEN_LTE
-			|	TOKEN_ELSE
-			|	TOKEN_DISPLAY
-			|	TOKEN_LAMBDA
-			|	TOKEN_MOD
-			|	TOKEN_IDENT
-                      /*| 	TOKEN_INTEGER_LITERAL*/
-;
-	;
-
-/*program		: TOKEN_ADD*/
-			/*;*/
 %%
 
 int yyerror(char *str)
