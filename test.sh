@@ -2,7 +2,7 @@
 
 for file in good/*
 do
-	if ./heist -parse $file > /dev/null
+	if ./heist -parse $file > /dev/null 2>&1
 	then
 		echo "$file parse success: as expected"
 	else
@@ -12,7 +12,7 @@ done
 
 for file in bad/*
 do
-	if ./heist -parse $file > /dev/null
+	if ./heist -parse $file > /dev/null 2>&1
 	then
 		echo "$file parse success: incorrect result"
 	else

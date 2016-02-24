@@ -15,28 +15,30 @@ extern const char* token_string(token_t t);
 int main(int argc, char* argv[]){
 	int opt, long_index;
 	static struct option long_options[] = {
-		{"scan",	required_argument, 0, 's'},
 		{"parse",	required_argument, 0, 'p'},
 		{0,		0,		   0, 0}
 	};
 	while ((opt = getopt_long_only(argc, argv,"",long_options,&long_index)) != -1){		// go through the command line options
 		switch(opt){
-			case 's':			// if the option was -scan
-				scan(optarg);			// scan the file argument
-				break;
 			case 'p':			// if the option was -parse
 				parse(optarg);			// parse the file argument
+				exit(0);
 				break;
 			default:
 				print_usage_and_exit();	// if the wrong options were given
 		}
 
 	}
+	if(argv[1]){
+		parse(argv[1]);
+	} else {
+		print_usage_and_exit();
+	}	
 	return 0;
 }
 
 void print_usage_and_exit(){
-  	printf("Usage: ./cminor -scan sourcefile.cmnior\n");
+  	printf("Usage: ./heist [-parse] sourcefile.scm\n");
   	exit(1);
 }
 
