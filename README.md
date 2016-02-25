@@ -61,9 +61,9 @@ version 1: February 25, 2016
 ## Credits
 
 ###Project Creators:
-*Tim Chang
-*Chris Syers
-*Mitchell Troy
+* Tim Chang
+* Chris Syers
+* Mitchell Troy
 
 ###Project Contributors
-*
+* 
