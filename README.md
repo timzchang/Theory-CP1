@@ -8,9 +8,9 @@ CSE 30151: Theory of Computing
 Course Project 1: February 26, 2016
 
 Created by:
-*Tim Chang
-*Chris Syers
-*Mitchell Troy
+* Tim Chang
+* Chris Syers
+* Mitchell Troy
 
 ## Installation
 To use heist and scmcalc, clone this repository using one of the following URLS:
@@ -45,9 +45,9 @@ An example of a valid Scheme arithmetic expression file (example.scm) is:
 
 Running this through scmcalc produces the following result:
 
-  $ ./scmcalc example.scm
-  successful parse
-  result is: 11
+    $ ./scmcalc example.scm
+    successful parse
+    result is: 11
 
 
 ## Contributing
