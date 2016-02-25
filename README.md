@@ -103,5 +103,3 @@ v1.1: February 25, 2016
 * Chris Syers
 * Mitchell Troy
 
-###Project Contributors
-* 
