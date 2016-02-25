@@ -57,10 +57,12 @@ Running this through scmcalc produces the following result:
 4. Push to the branch: `git push origin my-new-feature`
 5. Submit a pull request
 ## History
+
 version 1: February 25, 2016
+
 ## Credits
 
-###Project Creators:
+###Project Creators
 * Tim Chang
 * Chris Syers
 * Mitchell Troy
