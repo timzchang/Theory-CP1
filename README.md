@@ -1,5 +1,6 @@
-# ${1:Project Name}
-TODO: Write a project description
+# heist/scmcalc
+heist: a simple lexer/parser for Scheme programming language
+scmcalc: a Scheme calculator that can used for integer arithmetic 
 ## Installation
 TODO: Describe the installation process
 ## Usage
