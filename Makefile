@@ -8,5 +8,4 @@ scmcalc: scmcalc.make scmcalc.c schemecalc.bison scanner.l token.h token.c
 
 .PHONY: clean
 clean:
-	-rm -f parser.tab.* parser.output scanner.c heist *.o scmcalc parsercalc.tab.* *.output
-
+	-rm -f parser.tab.* parser.output scanner.c heist *.o scmcalc parsercalc.tab.* *.output parsercalc.h
