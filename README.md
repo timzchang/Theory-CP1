@@ -32,6 +32,28 @@ To use the heist tool, enter a command of the following form while in the Theory
 `./heist [-parse] sourcefile.scm`
 
 The `-parse` command line option is not required. `sourcefile.scm` is a Scheme source file. The program will tell you if `sourcefile.scm` is a valid Scheme program. If there is a scanning error, the program will exit with error code 1 and display a somewhat helpful error message with clues to what the error was. If there is a parsing error in the source file, heist will exit with error code 1, and display a generic error message with no clues to where the error occured.
+
+#### Testing
+
+There are ten "good" test files and five "bad" test files for `heist`. These are named good[0-9].scm (found in the `good` subdirectory), and bad[1-5] (found in the `bad` subdirectory. There is also a test script called `test_hesit.scm` that will run `heist` on each of the test files and print the result of the test to the screen. If the program exits with error status 0, then the parse was successul, and the file is valid scheme. This should be the case with the good test files. If any of the good files exit with status 1, then an error message will be printed from the script. The script will also run the bad test files, which should exit with status 1. If the successfulyl parse, an error message will be displayed by the script. The following result should be oberved when `test_heist` is run from the Theory-CP1 directory:
+
+    $ ./test_heist
+    good/good0.scm parse success: as expected
+    good/good1.scm parse success: as expected
+    good/good2.scm parse success: as expected
+    good/good3.scm parse success: as expected
+    good/good4.scm parse success: as expected
+    good/good5.scm parse success: as expected
+    good/good6.scm parse success: as expected
+    good/good7.scm parse success: as expected
+    good/good8.scm parse success: as expected
+    good/good9.scm parse success: as expected
+    bad/bad1.scm parse fail: as expected
+    bad/bad2.scm parse fail: as expected
+    bad/bad3.scm parse fail: as expected
+    bad/bad4.scm parse fail: as expected
+    bad/bad5.scm parse fail: as expected
+
 ### scmcalc
 To use the scmcalc tool, enter a command of the following form while in the Theory-CP1 directory:
 
@@ -49,7 +71,20 @@ Running this through scmcalc produces the following result:
     successful parse
     result is: 11
 
+#### Testing
 
+There are five test files for the `scmcalc` tool. These are named test[1-5].scm, and are found in the `calc/` directory. There is also a test script called `test_scmcalc.sh` that will run `scmcalc` on each of the test files and print the result to the screen. The following result should be oberved when `test_scmcalc` is run from the Theory-CP1 directory:
+
+    $ ./test_scmcalc
+    successful parse
+    result is: 4
+    successful parse
+    result is: 6
+    successful parse
+    result is: 40
+    successful parse
+    result is: 23296
+        
 ## Contributing
 1. Fork it!
 2. Create your feature branch: `git checkout -b my-new-feature`
