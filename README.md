@@ -96,8 +96,6 @@ There are five test files for the `scmcalc` tool. These are named test[1-5].scm,
 
 v1.1: February 25, 2016
 
-## Credits
-
 ###Project Creators
 * Tim Chang
 * Chris Syers
