@@ -1,3 +1,5 @@
+; error because of the # starting the install-trap - not supported by heist. It is supported by guile
+
 ;; scheme daily homework 6
 ;; name: Tim Chang
 ;; date: 2/3/2016
