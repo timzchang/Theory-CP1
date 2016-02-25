@@ -56,6 +56,7 @@ Running this through scmcalc produces the following result:
 3. Commit your changes: `git commit -am 'Add some feature'`
 4. Push to the branch: `git push origin my-new-feature`
 5. Submit a pull request
+
 ## History
 
 version 1: February 25, 2016
