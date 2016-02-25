@@ -1,4 +1,4 @@
-# heist\ /\ scmcalc
+# heist/scmcalc
 heist: a simple lexer/parser for Scheme programming language
 
 scmcalc: a Scheme calculator that can used for integer arithmetic 
