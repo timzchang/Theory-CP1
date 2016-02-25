@@ -59,7 +59,7 @@ Running this through scmcalc produces the following result:
 
 ## History
 
-version 1: February 25, 2016
+v1.1: February 25, 2016
 
 ## Credits
 
